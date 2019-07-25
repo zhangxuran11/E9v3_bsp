@@ -4,7 +4,7 @@
 function check_and_get_source_package()
 {
     if [ ! -f "$1" ]; then
-        wget $2
+        wget $2 -O $1 -c
     else
         this_sha256=$(sha256sum $1 | awk '{print $1}')
         if [ $this_sha256 != $3 ];then
@@ -18,6 +18,6 @@ function check_and_get_source_package()
 function check_and_unpackage_source()
 {
     if [ ! -d $2 ];then
-        tar xvf $1
+        tar -xvf $1
     fi
 }
