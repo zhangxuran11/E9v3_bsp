@@ -47,6 +47,8 @@ fi
 
 repo
 if [ $? == 0 ];then
+    echo repo is invalid
+    rm ~/bin/repo
     exit -1
 fi
 pushd fsl-release-bsp
