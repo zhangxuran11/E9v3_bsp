@@ -38,7 +38,8 @@ fi
 export PATH=~/bin:$PATH
 which repo
 if [ ! -f ~/bin/repo  -o  $? == 1 ];then
-    curl http://commondatastorage.googleapis.com/git-repo-downloads/repo > ~/bin/repo
+    cp component/repo  ~/bin/repo
+    #curl http://commondatastorage.googleapis.com/git-repo-downloads/repo > ~/bin/repo
     chmod a+x ~/bin/repo
 fi
 if [ ! -d fsl-release-bsp ];then
