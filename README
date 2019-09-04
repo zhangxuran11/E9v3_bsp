@@ -1,0 +1,10 @@
+
+./build.sh init #同步构建系统
+./build.sh make #构建镜像
+
+并行
+BB_NUMBER_THREADS = "16"
+PARALLEL_MAKE = "-j 16"
+
+所有组件包可从此处找到
+http://downloads.yoctoproject.org/mirror/sources/

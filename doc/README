@@ -1,3 +1,0 @@
-在顶层目录:
-./build.sh init #同步构建系统
-./build.sh make #构建镜像

@@ -45,12 +45,14 @@ fi
 if [ ! -d fsl-release-bsp ];then
     mkdir fsl-release-bsp
 fi
-
-repo
+repo 2> /dev/null
 if [ $? == 0 ];then
     echo repo is invalid
     rm ~/bin/repo
     exit -1
+fi
+if [ ! -d fsl-release-bsp ];then
+    mkdir fsl-release-bsp
 fi
 pushd fsl-release-bsp
 repo init -u git://git.freescale.com/imx/fsl-arm-yocto-bsp.git -b imx-4.1-krogoth
