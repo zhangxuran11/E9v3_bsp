@@ -1,18 +1,16 @@
 #!/bin/bash
-source common/common.sh
 
-if [ ! -d doc ];then
-    mkdir doc
+if [ $# -lt 1 ];then
+echo not fond config file
+echo Useage:
+echo "  ./build.sh init imx-yocto-L4.14.98_2.0.0_ga_defconfig"
+exit 1
 fi
 
-pushd doc
-FILE=fsl_yocto-L4.1.15_2.0.0-ga.tar.gz
-DIR=fsl_yocto-L4.1.15_2.0.0-ga
-URL="https://cache.nxp.com/secured/assets/documents/en/supporting-information/fsl_yocto-L4.1.15_2.0.0-ga.tar.gz?__gda__=1564073659_eaab277e7a07ba8ff431ca590d8b104f&fileExt=.gz"
-SHA256_VAL=14489086c4feb9585f3884821885ffca8a1e56b010aab5199c4ec0c7908690f5
-check_and_get_source_package $FILE $URL $SHA256_VAL
-check_and_unpackage_source $FILE $DIR
-popd
+source common/common.sh
+source common/$1
+cp common/$1 .config
+
 
 sudo apt-get build-dep qemu 
 sudo apt-get remove oss4-dev
@@ -36,14 +34,11 @@ if [ ! -d ~/bin ];then
 fi
 
 export PATH=~/bin:$PATH
-which repo
+which repo>/dev/null
 if [ ! -f ~/bin/repo  -o  $? == 1 ];then
     cp component/repo  ~/bin/repo
     #curl http://commondatastorage.googleapis.com/git-repo-downloads/repo > ~/bin/repo
     chmod a+x ~/bin/repo
-fi
-if [ ! -d fsl-release-bsp ];then
-    mkdir fsl-release-bsp
 fi
 repo 2> /dev/null
 if [ $? == 0 ];then
@@ -51,11 +46,12 @@ if [ $? == 0 ];then
     rm ~/bin/repo
     exit -1
 fi
-if [ ! -d fsl-release-bsp ];then
-    mkdir fsl-release-bsp
+if [ ! -d $YOCTO_DIR ];then
+    mkdir $YOCTO_DIR
 fi
-pushd fsl-release-bsp
-repo init -u git://git.freescale.com/imx/fsl-arm-yocto-bsp.git -b imx-4.1-krogoth
+pushd $YOCTO_DIR
+$($REPO_INIT_CMD)
+echo "<<"
 repo sync
 
-popd #fsl-release-bsp
+popd 

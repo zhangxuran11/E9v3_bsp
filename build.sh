@@ -1,13 +1,6 @@
 #!/bin/bash
-  case $1 in    
-    init)
-        echo ' start init..... '
-        common/build_init.sh
-        ;;
-    make)          
-        echo ' start make...   ' 
-        common/build_make.sh
-        ;;
-    *)
-        echo './build./sh init|make'
-  esac
+if [ ! -f common/build_$1.sh ];then
+echo "not fond $1 cmd."
+exit 1
+fi
+common/build_$1.sh $2

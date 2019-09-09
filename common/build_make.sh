@@ -1,7 +1,8 @@
 #!/bin/bash
-pushd fsl-release-bsp
+source .config
+pushd $YOCTO_DIR
 if [ ! -d build_x11 ];then
-DISTRO=fsl-imx-x11 MACHINE=imx6qsabresd source fsl-setup-release.sh -b build_x11
+DISTRO=fsl-imx-fb MACHINE=imx6qsabresd source fsl-setup-release.sh -b build_x11
 else
 source fsl-setup-release.sh -b build_x11
 fi

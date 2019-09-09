@@ -8,3 +8,6 @@ PARALLEL_MAKE = "-j 16"
 
 所有组件包可从此处找到
 http://downloads.yoctoproject.org/mirror/sources/
+
+kernel_4.14.98:
+http://sources.openembedded.org/git2_source.codeaurora.org.external.imx.linux-imx.git.tar.gz
