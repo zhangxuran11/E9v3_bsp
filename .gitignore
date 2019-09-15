@@ -1,2 +1,5 @@
 doc/fsl-yocto-L4.1.15_2.0.0-ga/
 fsl-release-bsp/
+imx-yocto-bsp/
+build/
+.config
