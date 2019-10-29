@@ -8,8 +8,8 @@ exit 1
 fi
 
 source common/common.sh
-source common/$1
 cp common/$1 .config
+source .config
 
 
 sudo apt-get build-dep qemu 
@@ -47,11 +47,11 @@ if [ $? == 0 ];then
     exit -1
 fi
 if [ ! -d $YOCTO_DIR ];then
-    mkdir $YOCTO_DIR
+    mkdir $YOCTO_DIR -p
 fi
 pushd $YOCTO_DIR
-$($REPO_INIT_CMD)
-echo "<<"
+pwd
+repo_init
 repo sync
 
 popd 

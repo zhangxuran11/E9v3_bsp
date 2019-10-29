@@ -1,4 +1,9 @@
-export YOCTO_DIR=imx-yocto-bsp
-export REPO_INIT_CMD="repo init -u https://source.codeaurora.org/external/imx/imx-manifest -b imx-linux-sumo -m imx-4.14.98-2.0.0_ga.xml"
+
+export TOP_DIR=$( cd $( dirname ${BASH_SOURCE[0]} ) && pwd )
+#export TOP_DIR=`cd $(dirname $0);pwd`
+export YOCTO_DIR=$TOP_DIR/build/imx-yocto-bsp
+function repo_init {
+    repo init -u https://source.codeaurora.org/external/imx/imx-manifest -b imx-linux-sumo -m imx-4.14.98-2.0.0_ga.xml
+}
 export BSP_VERSION="4.14.98-2.0.0_ga"
 export BUILD_DIR=build_x11
