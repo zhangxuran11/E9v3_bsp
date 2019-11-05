@@ -21,4 +21,8 @@ make clean
 ARCH=arm make tqe9v3_defconfig
 ARCH=arm make
 popd
+if [ ! -d build/image ];then
+    mkdir build/image -p
+fi
+cp $UBOOT_DIR/u-boot-dtb.imx build/image/
 

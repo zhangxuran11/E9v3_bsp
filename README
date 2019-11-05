@@ -1,6 +1,7 @@
 
 ./build.sh init #同步构建系统
 ./build.sh make #构建镜像
+sudo dd if=build/image/u-boot-dtb.imx of=/dev/sdx bs=1k seek=1 conv=fsync
 
 并行
 BB_NUMBER_THREADS = "16"
