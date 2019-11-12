@@ -1310,6 +1310,11 @@ void ldo_mode_set(int ldo_bypass)
 		printf("switch to ldo_bypass mode!\n");
 	}
 }
+#else //zxr
+void ldo_mode_set(int ldo_bypass)
+{
+    ldo_bypass = ldo_bypass;
+}
 #endif
 #endif
 

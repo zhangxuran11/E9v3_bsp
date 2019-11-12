@@ -12,3 +12,30 @@ http://downloads.yoctoproject.org/mirror/sources/
 
 kernel_4.14.98:
 http://sources.openembedded.org/git2_source.codeaurora.org.external.imx.linux-imx.git.tar.gz
+
+制作sd启动卡
+$ sudo fdisk /dev/sdx
+Type the following parameters (each followed by <ENTER>):
+    p [lists the current partitions]
+    d [to delete existing partitions. Repeat this until no unnecessary partitions are reported by the 'p' command to start fresh.]
+    n [create a new partition]
+    p [create a primary partition - use for both partitions]
+    1 [the first partition]
+    20480 [starting at offset sector]
+    1024000 [size for the first partition to be used for the boot images]
+    p [to check the partitions]
+    
+    n
+    p
+    2
+    1228800 [starting at offset sector, which leaves enough space for the kernel,the bootloader and its configuration data]
+    <enter> [using the default value will create a partition that extends to the last sector of the media]
+    p       [to check the partitions]
+    w       [this writes the partition table to the media and fdisk exits]
+
+烧写uboot
+sudo dd if=build/image/u-boot-dtb.imx of=/dev/sdc bs=1k seek=1 conv=fsync
+烧写内核
+$ sudo dd if=build/image/zImage of=/dev/sdx bs=512 seek=2048 conv=fsync && sync
+To flash the device trees generated from the build, execute the following commands:
+$ sudo dd if=<DevicetreeName>.dtb of=/dev/sdx bs=512 seek=20480 conv=fsync
