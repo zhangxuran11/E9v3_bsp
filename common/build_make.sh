@@ -8,7 +8,7 @@ source fsl-setup-release.sh -b build_x11
 fi
 #bitbake core-image-minimal -c populate_sdk 
 #bitbake core-image-minimal
-bitbake fsl-image-qt5-validation-imx
+bitbake fsl-image-qt5-validation-imx -c populate_sdk
 if [ ! -d $TOP_DIR/build/image ];then
     mkdir $TOP_DIR/build/imake -p
 fi
