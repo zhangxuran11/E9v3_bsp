@@ -158,7 +158,6 @@
 			linux,code = <KEY_VOLUMEDOWN>;
 		};
 	};
-***/
 	sound {
 		compatible = "fsl,imx6q-sabresd-wm8962",
 			   "fsl,imx-audio-wm8962";
@@ -185,6 +184,7 @@
 		hp-det-gpios = <&gpio7 8 1>;
 		mic-det-gpios = <&gpio1 9 1>;
 	};
+***/
 
 	sound-hdmi {
 		compatible = "fsl,imx6q-audio-hdmi",
@@ -195,9 +195,10 @@
 
 	mxcfb1: fb@0 {
 		compatible = "fsl,mxc_sdc_fb";
-		disp_dev = "ldb";
-		interface_pix_fmt = "RGB666";
-		default_bpp = <16>;
+		disp_dev = "lcd";
+		interface_pix_fmt = "RGB24";
+		mode_str ="CLAA-WVGA";
+		default_bpp = <24>;
 		int_clk = <0>;
 		late_init = <0>;
 		status = "disabled";
@@ -216,9 +217,8 @@
 
 	mxcfb3: fb@2 {
 		compatible = "fsl,mxc_sdc_fb";
-		disp_dev = "lcd";
-		interface_pix_fmt = "RGB565";
-		mode_str ="CLAA-WVGA";
+		disp_dev = "ldb";
+		interface_pix_fmt = "RGB666";
 		default_bpp = <16>;
 		int_clk = <0>;
 		late_init = <0>;
@@ -239,7 +239,7 @@
 		compatible = "fsl,lcd";
 		ipu_id = <0>;
 		disp_id = <0>;
-		default_ifmt = "RGB565";
+		default_ifmt = "RGB24";
 		pinctrl-names = "default";
 		pinctrl-0 = <&pinctrl_ipu1>;
 		status = "okay";
@@ -375,7 +375,7 @@
 
 &hdmi_core {
 	ipu_id = <0>;
-	disp_id = <0>;
+	disp_id = <1>;
 	status = "okay";
 };
 
@@ -392,6 +392,15 @@
 	pinctrl-0 = <&pinctrl_i2c1>;
 	status = "okay";
 
+    gt911@5d {                                                                                                                                                                                          
+        compatible = "goodix,gt911";                           
+        reg = <0x5d>;                                          
+        interrupt-parent = <&gpio1>;                         
+        interrupts = <9 2>;                                 
+
+        irq-gpios = <&gpio1 9 0>;                           
+        reset-gpios = <&gpio1 5 0>;                         
+    }; 
 	codec: wm8962@1a {
 		compatible = "wlf,wm8962";
 		reg = <0x1a>;
@@ -658,6 +667,7 @@
 				MX6QDL_PAD_EIM_D16__GPIO3_IO16 0x80000000
 				MX6QDL_PAD_SD3_RST__GPIO7_IO08	0x80000000
 				MX6QDL_PAD_GPIO_9__GPIO1_IO09 	0x80000000
+				MX6QDL_PAD_GPIO_5__GPIO1_IO05   0x80000000
 				MX6QDL_PAD_EIM_DA9__GPIO3_IO09 0x80000000
 				MX6QDL_PAD_NANDF_CS0__GPIO6_IO11 0x80000000
 				MX6QDL_PAD_NANDF_CS1__GPIO6_IO14 0x80000000
@@ -1079,7 +1089,7 @@
 };
 
 &usbh1 {
-	vbus-supply = <&reg_usb_h1_vbus>;
+	// vbus-supply = <&reg_usb_h1_vbus>; //zxr
 	status = "okay";
 };
 
@@ -1095,11 +1105,11 @@
 };
 
 &usbphy1 {
-	fsl,tx-d-cal = <106>;
+	fsl,tx-d-cal = <5>;
 };
 
 &usbphy2 {
-	fsl,tx-d-cal = <106>;
+	fsl,tx-d-cal = <5>;
 };
 
 &usdhc2 {
