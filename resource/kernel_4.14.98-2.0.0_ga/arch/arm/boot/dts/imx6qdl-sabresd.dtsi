@@ -391,6 +391,13 @@
 	pinctrl-names = "default";
 	pinctrl-0 = <&pinctrl_i2c1>;
 	status = "okay";
+    ft5x06@38 {
+        compatible = "edt,edt-ft5206";
+        reg = <0x38>;
+        interrupt-parent = <&gpio1>;
+        interrupts = <9 0>;
+        reset-gpios = <&gpio1 5 GPIO_ACTIVE_LOW>;
+    };
 
     gt911@5d {                                                                                                                                                                                          
         compatible = "goodix,gt911";                           
