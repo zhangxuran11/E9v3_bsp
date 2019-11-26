@@ -4,6 +4,7 @@ if [ $# -lt 1 ];then
 echo not fond config file
 echo Useage:
 echo "  ./build.sh init imx-yocto-L4.14.98_2.0.0_ga_defconfig"
+echo "  ./build.sh init imx-yocto-L4.1.15_2.0.0-ga_defconfig"
 exit 1
 fi
 

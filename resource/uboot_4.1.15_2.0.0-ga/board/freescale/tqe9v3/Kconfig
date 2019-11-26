@@ -1,0 +1,12 @@
+if TARGET_TQE9V3
+
+config SYS_BOARD
+	default "tqe9v3"
+
+config SYS_VENDOR
+	default "freescale"
+
+config SYS_CONFIG_NAME
+	default "tqe9v3"
+
+endif

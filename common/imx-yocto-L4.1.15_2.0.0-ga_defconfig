@@ -1,0 +1,15 @@
+#!/bin/sh
+export BSP_VERSION="4.1.15_2.0.0-ga"
+export BUILD_DIR=build_x11
+export TOP_DIR=$( cd $( dirname ${BASH_SOURCE[0]} ) && pwd )
+export YOCTO_DIR=$TOP_DIR/build/imx-yocto-bsp-L$BSP_VERSION
+function repo_init {
+    repo init -u git://git.freescale.com/imx/fsl-arm-yocto-bsp.git -b imx-4.1-krogoth
+}
+
+function source_env {
+    source /opt/fsl-imx-x11/4.1.15-2.1.0/environment-setup-cortexa9hf-neon-poky-linux-gnueabi
+}
+
+export YOCTO_UBOOT_DIR=$YOCTO_DIR/$BUILD_DIR/tmp/work/imx6qsabresd-poky-linux-gnueabi/u-boot-imx/2016.03-r0/git
+export UBOOT_IMX=u-boot.imx
