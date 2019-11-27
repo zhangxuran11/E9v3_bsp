@@ -18,7 +18,7 @@ cp resource/uboot_$BSP_VERSION/* $UBOOT_DIR/ -rfd
 pushd $UBOOT_DIR
 source_env
 
-#make clean
+make clean
 ARCH=arm make tqe9v3_defconfig
 ARCH=arm make -j 8
 

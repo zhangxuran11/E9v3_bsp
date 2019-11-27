@@ -43,11 +43,11 @@ Type the following parameters (each followed by <ENTER>):
 sudo mkfs.fat /dev/sdc1
 
 烧写uboot
-sudo dd if=build/image/u-boot-dtb.imx of=/dev/sdc bs=1k seek=1 conv=fsync
+sudo dd if=build/image/u-boot.imx of=/dev/sdc bs=1k seek=1 conv=fsync
 烧写内核及dtb
-sudo mount /dev/sdx1 /xxx
+sudo mount /dev/sdc1 /xxx
 sudo cp build/image/zImage /xxx
 sudo cp build/image/imx6q-sabresd.dtb /xxx
 
 烧写文件系统
-sudo dd if=build/image/core-image-minimal-imx6qsabresd.ext4 of=/dev/sdx2 conv=fsync
+sudo dd if=build/image/fsl-image-qt5-imx6qsabresd.ext4 of=/dev/sdc2 conv=fsync

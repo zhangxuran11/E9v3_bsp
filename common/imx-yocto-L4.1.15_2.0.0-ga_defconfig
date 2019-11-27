@@ -12,4 +12,6 @@ function source_env {
 }
 
 export YOCTO_UBOOT_DIR=$YOCTO_DIR/$BUILD_DIR/tmp/work/imx6qsabresd-poky-linux-gnueabi/u-boot-imx/2016.03-r0/git
-export UBOOT_IMX=u-boot.imx
+export UBOOT_IMX=u-boot.imx 
+
+export YOCTO_KERNEL_DIR=$YOCTO_DIR/$BUILD_DIR/tmp/work/imx6qsabresd-poky-linux-gnueabi/linux-imx/4.1.15-r0/git/
