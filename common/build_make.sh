@@ -1,5 +1,6 @@
 #!/bin/bash
 source .config
+cp resource/imx-yocto-bsp-L$BSP_VERSION/* $YOCTO_DIR/ -rfd
 pushd $YOCTO_DIR
 if [ ! -d build_x11 ];then
 DISTRO=fsl-imx-x11 MACHINE=imx6qsabresd source fsl-setup-release.sh -b build_x11
