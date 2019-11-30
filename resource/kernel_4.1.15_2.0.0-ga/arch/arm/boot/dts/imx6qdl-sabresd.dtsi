@@ -73,9 +73,9 @@
 			regulator-name = "usb_otg_vbus";
 			regulator-min-microvolt = <5000000>;
 			regulator-max-microvolt = <5000000>;
-			gpio = <&gpio3 22 0>;
+			//gpio = <&gpio3 22 0>;
 			enable-active-high;
-			vin-supply = <&swbst_reg>;
+			//vin-supply = <&swbst_reg>;
 		};
 
 		reg_usb_h1_vbus: regulator@1 {
@@ -84,9 +84,9 @@
 			regulator-name = "usb_h1_vbus";
 			regulator-min-microvolt = <5000000>;
 			regulator-max-microvolt = <5000000>;
-			gpio = <&gpio1 29 0>;
+			//gpio = <&gpio1 29 0>;
 			enable-active-high;
-			vin-supply = <&swbst_reg>;
+			//vin-supply = <&swbst_reg>;
 		};
 
 		reg_audio: regulator@2 {
@@ -1056,11 +1056,11 @@
 	status = "okay";
 };
 
-&wdog1 {
+&wdog2 {     //zxr
 	status = "disabled";
 };
 
-&wdog2 {
+&wdog1 {    //zxr
 	pinctrl-names = "default";
 	pinctrl-0 = <&pinctrl_wdog>;
 	fsl,wdog_b;
