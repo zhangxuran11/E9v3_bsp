@@ -5,8 +5,11 @@ pushd $YOCTO_DIR
 if [ ! -d build_x11 ];then
 DISTRO=fsl-imx-x11 MACHINE=imx6qsabresd source fsl-setup-release.sh -b build_x11
 else
-source fsl-setup-release.sh -b build_x11
+source setup-environment build_x11
 fi
+
+cp $TOP_DIR/resource/imx-yocto-bsp-L$BSP_VERSION/build_x11 build_x11 -rfd
+
 bitbake fsl-image-qt5
 bitbake fsl-image-qt5 -c populate_sdk
 if [ ! -d $TOP_DIR/build/image ];then

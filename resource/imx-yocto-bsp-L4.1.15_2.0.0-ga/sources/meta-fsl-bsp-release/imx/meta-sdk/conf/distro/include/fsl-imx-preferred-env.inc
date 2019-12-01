@@ -48,10 +48,10 @@ PREFERRED_VERSION_xf86-video-imxfb-vivante_mx6 = "5.0.11.p8.6"
 PREFERRED_VERSION_kernel-module-imx-gpu-viv_mx6 = "5.0.11.p8.6"
 
 # Use systemd as default init manager - comment out for now
-VIRTUAL-RUNTIME_init_manager = "systemd"
-PREFERRED_PROVIDER_udev = "systemd"
-PREFERRED_PROVIDER_udev-utils = "systemd"
-DISTRO_FEATURES_BACKFILL_CONSIDERED = "sysvinit"
-IMX_DEFAULT_DISTRO_FEATURES += " systemd"
+#VIRTUAL-RUNTIME_init_manager = "systemd"
+#PREFERRED_PROVIDER_udev = "systemd"
+#PREFERRED_PROVIDER_udev-utils = "systemd"
+#DISTRO_FEATURES_BACKFILL_CONSIDERED = "sysvinit"
+#IMX_DEFAULT_DISTRO_FEATURES += " systemd"
 
 GCCVERSION = "5.3.0"

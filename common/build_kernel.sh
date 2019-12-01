@@ -23,3 +23,4 @@ make modules_install INSTALL_MOD_PATH=$TOP_DIR/build/image/kernel_modules/
 popd
 cp $KERNEL_DIR/arch/arm/boot/zImage build/image/
 cp $KERNEL_DIR/arch/arm/boot/dts/imx6q-sabresd.dtb build/image/
+
